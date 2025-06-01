@@ -70,34 +70,53 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 <h3>Program</h3>
 
 ```python
-from collections import deque
-from collections import defaultdict
-def bfs(graph,start,visited,path):
+from collections import deque, defaultdict
+
+def bfs(graph, start, visited, path):
     queue = deque()
     path.append(start)
     queue.append(start)
     visited[start] = True
-    while len(queue) != 0:
+
+    while queue:
         tmpnode = queue.popleft()
         for neighbour in graph[tmpnode]:
-            if visited[neighbour] == False:
+            if not visited[neighbour]:
                 path.append(neighbour)
                 queue.append(neighbour)
                 visited[neighbour] = True
+
     return path
 
+# Initialize the graph
 graph = defaultdict(list)
-v,e = map(int,input().split())
-for i in range(e):
-    u,v = map(str,input().split())
-    graph[u].append(v)
-    graph[v].append(u)
 
-start = 'A'
-path = []
+# Read number of nodes and edges
+n, e = map(int, input("Enter number of nodes and edges: ").split())
+
+# Read edges (as strings to support letters and numbers)
+for _ in range(e):
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)  # undirected graph
+
+# Sort neighbors for consistent traversal (optional)
+for node in graph:
+    graph[node].sort()
+
+# Input starting node
+start = input("Enter starting node: ")
+
+# Initialize visited and path
 visited = defaultdict(bool)
-traversedpath = bfs(graph,start,visited,path)
-print(traversedpath)
+path = []
+
+# Perform BFS traversal
+traversedpath = bfs(graph, start, visited, path)
+
+# Output the BFS traversal path
+print("BFS Traversal:", traversedpath)
+
 ```
 
 <hr>
@@ -116,7 +135,10 @@ G F <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
-['A', 'B', 'C', 'F', 'E', 'D', 'G']
+['A', 'B', 'C', 'F', 'D', 'E', 'G']
+
+![image](https://github.com/user-attachments/assets/fd034cb1-aae8-45f2-a89e-b5be9d5c89bf)
+
 
 <hr>
 
@@ -134,6 +156,10 @@ G F <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+
+![image](https://github.com/user-attachments/assets/80d7ce80-80ad-4118-832f-ae0aea780851)
+
+
 <hr>
 <h3>Result:</h3>
 <hr>
