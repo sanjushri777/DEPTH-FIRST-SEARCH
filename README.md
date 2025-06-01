@@ -137,8 +137,8 @@ G F <BR>
 <hr>
 ['A', 'B', 'C', 'F', 'D', 'E', 'G']
 
+![image](https://github.com/user-attachments/assets/11c75550-9877-4f5f-b199-af1acdcf9957)
 
-![image](https://github.com/user-attachments/assets/43818a71-1c1a-4f61-8d08-f818c23e8225)
 
 
 <hr>
